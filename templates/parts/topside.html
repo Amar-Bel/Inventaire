@@ -1,0 +1,63 @@
+
+ <!-- top side -->
+ <div class="container my-3">
+    <div class="row mt-4">
+      <div class="col-md-4 my-3">
+           {% comment %} <div class="card">
+                <div class="card-header bg-body-secondary text-success-emphasis text-center text-bold fw-bold">
+                    information
+                </div>
+                <div class="card-body">
+                    <marquee behavior="" direction="">
+                        <h3 class="fw-bold my-3">c'est des informations</h3>
+                    </marquee>
+
+                </div>
+            </div>  {% endcomment %}
+        
+        </div> 
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-body-secondary text-success-emphasis text-center text-bold fw-bold">
+                    statistiques
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="text-decoration-none" href="{% url 'dashboard-staff' %}" >
+                                <div class="card my-card shadow text-center p-3 bg-body-secondary">
+                                    <h4>personnel <i class="ri-team-fill fs-1"></i></h4>
+                                    <h3>{{ workers_count }}</h3>
+
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="col-md-4">
+                            <a class="text-decoration-none" href="{% url 'dashboard-products'%}" >
+                                <div class="card my-card shadow text-center p-3 bg-body-secondary">
+                                    <h4>produit <i class="ri-macbook-line fs-1 text-info"></i></h4>
+                                    <h3>{{ items_count }}</h3>
+
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="col-md-4">
+                            <a class="text-decoration-none" href="{% url 'dashboard-order' %}" >
+                                <div class="card my-card shadow text-center p-3 bg-body-secondary">
+                                    <h4>commande <i class="ri-truck-fill fs-1 text-warning"></i></h4>
+                                    <h3>{{ orders_count }}</h3>
+
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- end topside -->

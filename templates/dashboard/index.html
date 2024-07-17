@@ -1,0 +1,25 @@
+ {% extends 'parts/base.html' %}
+ {% block title %}home page{% endblock %}
+ {% block content %}
+ {% if user.is_authenticated and user.is_staff and user.is_superuser%}
+ {% include 'parts/topside.html' %} 
+ <div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="bg-white">
+               <canvas id="myChart" width="400" height="200">
+               </canvas>
+            </div>
+        </div>
+         <div class="col-md-6">
+                <div class="bg-white">
+                   <canvas id="myChart1" width="400" height="200">
+                   </canvas>
+                </div>
+         </div>
+    </div>
+ </div>
+ {% endif %}
+ {% endblock %} 
+  
+

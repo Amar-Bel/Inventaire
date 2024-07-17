@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static './boot/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static './boot/css/style.css' %} ">
+    <title>{% block title %}
+           {% endblock %}
+    </title>
+</head>
+<body class="bg-light">
+   
+    {% include 'parts/nav.html' %}
+    <div class="container">
+      {% block content %}
+      {% endblock %} 
+  </div>
+
+    <script src="{% static './boot/js/jquery-3.7.1.min.js' %} "></script>
+    <script src=" {% static './boot/js/popper.min.js' %}"></script>
+    <script src="{% static './boot/js/bootstrap.js' %} "></script>
+    <script src="{% static './boot/js/Chart.min.js' %}"></script>
+<!-- bar -->
+
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+            {% for product in products %}
+           '{{product.name}}',
+            {% endfor %}
+            ],
+            datasets: [{
+              label: ' produit',
+              data: [
+              {% for product in products %}
+              {{product.quantity}},
+               {% endfor %}
+              ],
+              borderWidth: 1,
+              backgroundColor:[
+              '#4d4df1',
+              '#ee453c',
+              '#9531f2',
+              '#31f2e0',
+              '#daf231',
+              '#32f231',
+              '#f231dd',
+              '#31f2e9',
+              '#f2cc31',
+              '#5ff231',
+              '#3a31f2',
+              '#e71285',
+              '#29a78e',
+
+
+
+              ]
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+<!-- pie -->
+<script>
+    const ctxpie = document.getElementById('myChart1');
+  
+    new Chart(ctxpie , {
+      type: 'pie',
+      data: {
+        labels: [ {% for order in orders %}'{{ order.Products.name }}',{% endfor %}],
+        datasets: [{
+          label: ' Commands',
+          data: [
+          {% for order in orders %}
+          {{order.order_quantity}},
+          {% endfor %}
+
+          ],
+          borderWidth: 1,
+          backgroundColor:[
+          '#4d4df1',
+          '#ee453c',
+          '#9531f2',
+          '#31f2e0',
+          '#daf231',
+          '#32f231',
+          '#f231dd',
+
+          
+          '#31f2e9',
+          '#f2cc31',
+          '#5ff231',
+          '#3a31f2',
+          '#e71285',
+          '#29a78e',
+          ]
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+    
+</body>
+</html>
+
+

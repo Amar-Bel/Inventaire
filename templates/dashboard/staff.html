@@ -1,0 +1,40 @@
+{% extends 'parts/base.html'%}
+{% block title %}staff page{% endblock %}
+
+{% block content %}
+{% include 'parts/topside.html' %} 
+<!-- table  -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+  
+      </div>
+      <div class="col-md-8">
+        <table class="table bg-white">
+          <thead>
+            <tr class="text-white">
+              <th scope="col">#</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for workers in workers %}
+            <tr>
+              <th scope="row"> <a href="{% url 'dashboard-staff-detail' workers.id %}" class="btn  btn-secondary btn-sm">view</a></th>
+              <td>{{ workers.username}}</td>
+              <td>{{ workers.email }}</td>
+              <td>{{ workers.profile.phone}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+  
+      </div>
+  
+      </div>
+    </div>
+   </div>
+  <!-- end table -->
+{%endblock%}

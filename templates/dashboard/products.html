@@ -1,0 +1,55 @@
+{% extends 'parts/base.html' %}
+{% block title %}Produit{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include 'parts/topside.html' %}
+<!-- table  -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% for message in  messages %}
+            {%if message %}
+            <div class="alert alert-{{message.tags}}">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="border bg-white p-3">
+                <h3>Ajouter un produit</h3>
+                <hr>
+                <form method="POST">
+                  {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success btn-block" value="Ajouter un produit">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Activité</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for item in items %}
+                    <tr>
+                        <th scope="row">{{ item.name }}</th>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            <a href="{% url 'dashboard-products-update' item.id  %}" class="btn btn-info btn-sm">Modifier</a>
+                            <a href="{% url 'dashboard-products-delete' item.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- end table -->
+{% endblock %}

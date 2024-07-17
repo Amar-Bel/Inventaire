@@ -1,0 +1,14 @@
+:root{
+    --bg-body:#eafcff;
+}
+body{
+    background: var(--bg-body);
+}
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2 ease-in-out;
+}
+.row--chartt{
+    background: var(--bg-body);
+
+}
